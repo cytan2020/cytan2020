@@ -21,7 +21,7 @@ There are 2 ways to create pods in Kubernetes declaratively via a yaml manifest 
 
 
 2. The YAML file follows a specific structure. The indentation is important and the commands will not run if the indentation is wrong. Refer to the slides or the official documentation for more information on the YAML structure. Copy the following into the YAML file
-` 
+```
 <apiVersion: v1
 kind: Pod
 metadata:
@@ -29,4 +29,8 @@ metadata:
 spec:
   containers:
   - name: myapp-container
-    image: redis  `
+    image: redis   
+```
+
+3. We will be using vi commands regularly when editing the YAML file. Refer to https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started if you need more information on basic vi commands. If you are in “-- INSERT --” mode after copying the text, hit your escape key and enter “:wq!” into the command line. This command saves and exits the file. Hit enter to run the command
+
