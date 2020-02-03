@@ -16,13 +16,14 @@ Before we begin, we need to check if kubectl is installed properly. Kubectl is a
 There are 2 ways to create pods in Kubernetes declaratively via a yaml manifest file, or imperatively via kubectl commands.
 
 
-1.  We will walk through both ways. Let’s start with the declarative approach using YAML first. To create a pod via YAML, we need to create a YAML file first. Run the command ‘vi create-pod.yaml’. A new file ‘create-pod.yaml’ will be created.
+1.  We will walk through both ways. Let’s start with the declarative approach using YAML first. To create a pod via YAML, we need to create a YAML file first. Run the command ```vi create-pod.yaml’``` . A new file ```create-pod.yaml ```  will be created.
 
-
+```
+``` 
 
 2. The YAML file follows a specific structure. The indentation is important and the commands will not run if the indentation is wrong. Refer to the slides or the official documentation for more information on the YAML structure. Copy the following into the YAML file
 ```
-<apiVersion: v1
+apiVersion: v1
 kind: Pod
 metadata:
   name: myapp-pod1
