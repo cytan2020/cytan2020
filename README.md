@@ -8,18 +8,19 @@ In this lab, you will need to:
  
 ## Prerequisites  
 
-You need to understand the basic concept of pods and YAML. Refer to the slides for more information
-Before we begin, we need to check if kubectl is installed properly. Kubectl is a command line for controlling Kubernetes clusters. Run ‘kubectl version’ to check if kubectl is installed properly. You should see the version of the installed kubectl.
+1. You need to understand the basic concept of pods and YAML. Refer to the slides for more information.   
+2. We will be using vi commands regularly when editing the YAML file. Refer to https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started if you need more information on basic vi commands. 
+3. Before we begin, we need to check if kubectl is installed properly. Kubectl is a command line for controlling Kubernetes clusters. Run ‘kubectl version’ to check if kubectl is installed properly. You should see the version of the installed kubectl.
 
 ## Create Pods 
 
 There are 2 ways to create pods in Kubernetes declaratively via a yaml manifest file, or imperatively via kubectl commands.
 
 
-1.  We will walk through both ways. Let’s start with the declarative approach using YAML first. To create a pod via YAML, we need to create a YAML file first. Run the command ```vi create-pod.yaml``` . A new file ```create-pod.yaml ```  will be created.
+1.  We will walk through both ways. Let’s start with the declarative approach using YAML first. To create a pod via YAML, we need to create a YAML file first. Run the command ```vi create-pod.yaml``` . Enter ```:wq!``` to save and exit the file. A new file ```create-pod.yaml ```  will be created.
 
 
-2. The YAML file follows a specific structure. The indentation is important and the commands will not run if the indentation is wrong. Refer to the slides or the official documentation for more information on the YAML structure. Copy the following into the YAML file
+2. The YAML file follows a specific structure. The indentation is important and the commands will not run if the indentation is wrong. Refer to the slides or the official documentation for more information on the YAML structure. Copy the following into the YAML file:
 ```
 apiVersion: v1
 kind: Pod
@@ -31,11 +32,11 @@ spec:
     image: redis   
 ```
 
-3. We will be using vi commands regularly when editing the YAML file. Refer to https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started if you need more information on basic vi commands. If you are in ```-- INSERT --```
+3. If you are in ```-- INSERT --```
  mode after copying the text, hit your escape key and enter ```:wq!``` into the command line. This command saves and exits the file. Hit enter to execute the command. 
 
-4. To check if the YAML file has been saved, run the command ```cat create-pod.yaml``` to view the YAML file. You should see the following: 
- 
+4. To check if the YAML file has been saved, run the command ```cat create-pod.yaml``` to view the YAML file. You should see the following:  
+
 
 5. Run ```kubectl create -f create-pod.yaml``` to create a pod. You should see the following: 
  
