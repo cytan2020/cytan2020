@@ -38,63 +38,41 @@ spec:
 
 Save the file as replicaset1.yaml and run ```kubectl create -f replicaset1.yaml```. You should see the following message: ```error: unable to recognize "replicaset-definition-1.yaml": no matches for kind "ReplicaSet" in version "v1"```.
 
-2. 
+2.  Note that the apiVersion for ReplicaSet is not the same as the apiVersion for Pods. Edit the yaml file and change the version to ```apps/v1```. Run ```kubectl create -f replicaset1.yaml``` again. You should see the following message: ```replicaset.apps/replicaset-1 created```. 
 
-You should see the following message: ```replicaset.apps/replicaset-1 created```.
+If the yaml file is unable to execute, an error message will be displayed. Common errors include identation issues, wrong use of apiVersion and incorrect labels. 
 
-2. The YAML file follows a specific structure. The indentation is important and the commands will not run if the indentation is wrong. Refer to the slides or the official documentation for more information on the YAML structure. Copy the following into the YAML file:
-```
-apiVersion: v1
-kind: Pod
-metadata:
-  name: myapp-pod1
-spec:
-  containers:
-  - name: myapp-container
-    image: redis   
-```
 
-3. If you are in ```-- INSERT --```
- mode after copying the text, hit your escape key and enter ```:wq!``` into the command line. This command saves and exits the file. Hit enter to execute the command. 
-
-4. To check if the YAML file has been saved, run the command ```cat create-pod.yaml``` to view the YAML file. You should see the following:  
-
-<img width="266" alt="Screenshot 2020-02-11 at 2 56 48 PM" src="https://user-images.githubusercontent.com/60460833/74216419-596daf80-4cdf-11ea-8921-71e1e93c1bd2.png"> 
-
-5. Run ```kubectl create -f create-pod.yaml``` to create a pod. You should see the message:```pod/myapp-pod1 created```.
+## View ReplicaSet
+1. To view the replicaset that you have created in the current namespace, run the command ```kubectl get replicaset```. You should see the following: 
  
-The ```kubectl create -f <name of yaml>``` command executes and creates a pod object based on the specifications in the file. This is applicable for the creation of other Kubernetes objects as well.   
- 
-6. Next, we will create a pod via imperative command. Run the command ```kubectl run myapp-pod2 --image=redis --restart=Never```. You should see the message: ```pod/myapp-pod2 created```.
-
-The imperative command is a quick way to generate a pod, but more often than not it is better to have a definition file stored somewhere for accountability purposes. 
- 
-
-## View Pods
-1. To view all the pods that you have created in the current namespace, run the command ```kubectl get pod```. You should see the following: 
- 
- <img width="470" alt="Screenshot 2020-02-11 at 3 06 59 PM" src="https://user-images.githubusercontent.com/60460833/74216703-3394da80-4ce0-11ea-838c-b36c24ed2c09.png">
+<img width="447" alt="Screenshot 2020-02-11 at 3 48 39 PM" src="https://user-images.githubusercontent.com/60460833/74218848-09461b80-4ce6-11ea-857e-0f19f5802f9d.png">
    
 
-This command gives a high level overview of the pods that are currently running in the namespace. It provides the name of the pod, the number of ‘ready’ containers in the pod, the status of the pod, the number of time it restarted, as well as the age of the pod
+This command gives a high level overview of the replicasets that are currently running in the namespace. It provides the name of the replicaset, the number of ‘desired’ number of pods, the 'current' number of pods, the 'ready' of pods, as well as the age of the replicaset. We set the number of replicas to 2, so our replicaset will create 2 pods. 
 
-2. To get more information on a particular pod, run the command ```kubectl describe pod myapp-pod1```. You should see the following: 
+2. To get more information on a particular replicaset, run the command ```kubectl describe replicaset```. You should see the following: 
 
-<img width="1065" alt="Screenshot 2020-02-11 at 3 10 26 PM" src="https://user-images.githubusercontent.com/60460833/74216857-a69e5100-4ce0-11ea-828b-a23b36afdcdb.png">
+<img width="880" alt="Screenshot 2020-02-11 at 4 24 47 PM" src="https://user-images.githubusercontent.com/60460833/74220627-0a2d7c00-4ceb-11ea-8fda-7675a92e4e64.png">
 
-The ```kubectl describe pod <name of pod>``` gives in-depth information about the pod. We will not be diving into the details of the pod in this course, but if you need to find out more information about the pod you can find it here. 
+From the event section at the bottom, you will be able to see that 2 pods have been created successfully. 
+
+3. Run ```kubectl get pods```. You should see 2 pods. Delete 1 of the pods and run ```kubectl get pods``` again. You should see that the replicaset will automatically maintain 2 pods even if you delete 1 of them.
  
+## Scale Pods 
+
+There are 2 ways of scaling pods. The first way is to edit the yaml file, while the second is to edit it via the command line. 
+
+1. Run ```kubectl get replicaset```. There are currently 2 pods. Run ```kubectl scale rs replicaset-1 --replicas=5```. You should see the following message: ```replicaset.apps/replicaset-1 scaled ```. Run ```kubectl get replicaset``` again. The number of pods should be 5 now. 
+
+2. Run ```kubectl edit rs replicaset-1```. Edit the number of replicas to 3. Save and exit. You should see the message: ```replicaset.apps/replicaset-1 edited```. Run ```kubectl get replicaset``` again. The number of pods should be 3 now. 
  
-## Delete Pods
+## Delete ReplicaSet
 
-1. Next, let's delete the pods. Run the command ```kubectl delete pod myapp-pod1```. You should see the message: pod "myapp-```pod1" deleted```.
+1. Next, let's delete the replicaset. Run the command ```kubectl delete rs replicaset-1```. You should see the message: ```replicaset.apps "replicaset-1" deleted```.
  
 
-Run ```kubectl get pod```. You should only see ```myapp-pod2``` left. 
+Run ```kubectl get rs```. You should not see any replicaset. 
 
 
-
-2. Repeat the same step and delete ```myapp-pod2```. 
-
-
-# Congratulations! You have completed the Kubernetes Pods exercise!
+# Congratulations! You have completed the Kubernetes ReplicaSet exercise!
