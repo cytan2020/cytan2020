@@ -58,7 +58,7 @@ This command gives a high level overview of the pods that are currently running 
 
 2. To get more information on a particular pod, run the command ```kubectl describe pod myapp-pod1```. You should see the following: 
 
-https://user-images.githubusercontent.com/60460833/74216857-a69e5100-4ce0-11ea-828b-a23b36afdcdb.png
+<img width="1065" alt="Screenshot 2020-02-11 at 3 10 26 PM" src="https://user-images.githubusercontent.com/60460833/74216857-a69e5100-4ce0-11ea-828b-a23b36afdcdb.png">
 
 The ```kubectl describe pod <name of pod>``` gives in-depth information about the pod. We will not be diving into the details of the pod in this course, but if you need to find out more information about the pod you can find it here. 
  
