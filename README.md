@@ -31,8 +31,8 @@ spec:
     image: redis   
 ```
 
-3. We will be using vi commands regularly when editing the YAML file. Refer to https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started if you need more information on basic vi commands. If you are in ```-- INSERT --
-```  mode after copying the text, hit your escape key and enter “:wq!” into the command line. This command saves and exits the file. Hit enter to run the command. 
+3. We will be using vi commands regularly when editing the YAML file. Refer to https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started if you need more information on basic vi commands. If you are in ```-- INSERT --```
+ mode after copying the text, hit your escape key and enter ```:wq!``` into the command line. This command saves and exits the file. Hit enter to execute the command. 
 
 4. To check if the YAML file has been saved, run the command ```cat create-pod.yaml``` to view the YAML file. You should see the following: 
  
