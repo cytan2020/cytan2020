@@ -45,9 +45,10 @@ If the yaml file is unable to execute, an error message will be displayed. Commo
 
 
 ## View Deployment
-1. To view the deployment that you have created in the current namespace, run the command ```kubectl get deployment```. You should see the following: 
+1. To view the deployment that you have created in the current namespace, you can run the command ```kubectl get deployment```. For now let's run ```kubectl get all``` to see all the resources created by the deployment. You should see the following: 
  
-<img width="447" alt="Screenshot 2020-02-11 at 3 48 39 PM" src="https://user-images.githubusercontent.com/60460833/74218848-09461b80-4ce6-11ea-857e-0f19f5802f9d.png">
+<img width="716" alt="Screenshot 2020-02-12 at 3 38 40 PM" src="https://user-images.githubusercontent.com/60460833/74313605-f9463e80-4dae-11ea-9aec-1d90d2355b55.png">
+
    
 
 This command gives a high level overview of the replicasets that are currently running in the namespace. It provides the name of the replicaset, the number of ‘desired’ number of pods, the 'current' number of pods, the 'ready' of pods, as well as the age of the replicaset. We set the number of replicas to 2, so our replicaset will create 2 pods. 
