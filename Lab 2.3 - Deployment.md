@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: nginx-container
-        image: nginx
+        image: nginx:1.7.8
 ```
 
 Save the file as deployment1.yaml and run ```kubectl create -f deployment1.yaml```. You should see the following message: ```error: error parsing dep1.yaml: error converting YAML to JSON: yaml: line 6: did not find expected key```.
@@ -53,28 +53,52 @@ If the yaml file is unable to execute, an error message will be displayed. Commo
 
 The "get all" command gives an overview of all the resources that are currently running in the namespace. Since deployment creates replicasets and the replicaset creates pods, we are able to see those resources in the namespace. 
 
-2. To get more information on a particular replicaset, run the command ```kubectl describe replicaset```. You should see the following: 
+2. To get more information on a particular deployment, run the command ```kubectl describe deployment```. You should see the following: 
 
-<img width="880" alt="Screenshot 2020-02-11 at 4 24 47 PM" src="https://user-images.githubusercontent.com/60460833/74220627-0a2d7c00-4ceb-11ea-8fda-7675a92e4e64.png">
-
-From the event section at the bottom, you will be able to see that 2 pods have been created successfully. 
-
-3. Run ```kubectl get pods```. You should see 2 pods. Delete 1 of the pods and run ```kubectl get pods``` again. You should see that the replicaset will automatically maintain 2 pods even if you delete 1 of them.
+<img width="1148" alt="Screenshot 2020-02-12 at 4 55 42 PM" src="https://user-images.githubusercontent.com/60460833/74318654-a1143a00-4db8-11ea-9f36-4df73c3ff49e.png">
  
-## Scale Pods 
-
-There are 2 ways of scaling pods. The first way is to edit the yaml file, while the second is to edit it via the command line. 
-
-1. Run ```kubectl get replicaset```. There are currently 2 pods. Run ```kubectl scale rs replicaset-1 --replicas=5```. You should see the following message: ```replicaset.apps/replicaset-1 scaled ```. Run ```kubectl get replicaset``` again. The number of pods should be 5 now. 
-
-2. Run ```kubectl edit rs replicaset-1```. Edit the number of replicas to 3. Save and exit. You should see the message: ```replicaset.apps/replicaset-1 edited```. Run ```kubectl get replicaset``` again. The number of pods should be 3 now. 
+Take note of the version of nginx under the pod template section. The current image version is nginx:1.7.8. From the event section at the bottom, you will be able to see that a replicaset with 2 pods has been created successfully. 
  
+## Upgrade Deployment 
+
+There are 2 ways of upgrading deployments. The first way is to edit the yaml file, while the second is to edit it via the command line. 
+
+1. Run ```kubectl set image deployment deployment-1 nginx-container=nginx:1.7.9```. You should see the following message: ```deployment.apps/deployment-1 image updated ```.  
+
+2. Run ```kubectl rollout status deployment deployment-1```. You should see the following message: ```deployment "deployment-1" successfully rolled out```. The rollout command is used for checking the status of the rollout. 
+
+3. Run ```kubectl describe deployment```. You should see the nginx version as nginx:1.7.9. 
+
+![image](https://user-images.githubusercontent.com/60460833/74321604-82647200-4dbd-11ea-9842-417ff279304a.png)
+ 
+4. Run ```kubectl edit deployment deployment-1```. Go to nginx-container and change the version to ```nginx:1.7.8```. 
+
+5. Run ```kubectl describe deployment``` and verify that the version is changed back to nginx:1.7.8.
+
+## Rollback Deployment
+
+1. Run ```kubectl rollout undo deployment deployment-1```. You should see the message: ```deployment.apps/deployment-1 rolled back```. 
+
+2. Run ```kubectl describe deployment``` and verify that the version is changed back to nginx:1.7.9. 
+ 
+3. Run```kubectl set image deployment deployment-1 nginx-container=nginx:999```. Next, run ```kubectl rollout status deploy deployment-1```. You should see the message ```Waiting for deployment "deployment-1" rollout to finish: 1 out of 2 new replicas have been updated...```. Ctrl+C to terminate the command. 
+
+4. Run ```kubectl get pods```. You should see the following: 
+
+<img width="789" alt="Screenshot 2020-02-12 at 5 46 44 PM" src="https://user-images.githubusercontent.com/60460833/74323025-cc4e5780-4dbf-11ea-92d4-c8989fbc39dc.png">
+
+The reason that only 1 pod encountered an error is due to the fact that the pods are upgraded 1 at a time. This is the benefit of using rolling update. If there is a problem with your update, the error will not bring your system down. The remaining pods are still able to service your existing users.
+ 
+5. Run ```kubectl describe deployment``` and verify that the version is nginx:999. Run ```kubectl rollout history deployment deployment-1``` . You should see a list of rollout history that you have done. Run ```kubectl rollout history deploy deployment-1 --revision=2```. You should be able to see a snippet of the pod template. 
+
+6. Run ``` kubectl rollout undo deployment deployment-1 --to-revision=2 ```. You should see the message: ```deployment.apps/deployment-1 rolled back```. Run ``` kubectl rollout status deploy deployment-1``` to verify that the deployment has been successfully rolled out.
+
 ## Delete ReplicaSet
 
-1. Next, let's delete the replicaset. Run the command ```kubectl delete rs replicaset-1```. You should see the message: ```replicaset.apps "replicaset-1" deleted```.
+1. Next, let's delete the deployment. Run the command ```kubectl delete deployment deployment-1```. You should see the message: ```deployment.apps/deployment-1 deleted```. 
  
 
-Run ```kubectl get rs```. You should not see any replicaset. 
+Run ```kubectl get all```. You should no longer see the pods and replicaset that are associated with the deployment. 
 
 
-# Congratulations! You have completed the Kubernetes ReplicaSet exercise!
+# Congratulations! You have completed the Kubernetes Deployment exercise!
