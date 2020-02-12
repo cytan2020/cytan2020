@@ -55,7 +55,8 @@ The "get all" command gives an overview of all the resources that are currently 
 
 2. To get more information on a particular deployment, run the command ```kubectl describe deployment```. You should see the following: 
 
-<img width="1148" alt="Screenshot 2020-02-12 at 4 55 42 PM" src="https://user-images.githubusercontent.com/60460833/74318654-a1143a00-4db8-11ea-9f36-4df73c3ff49e.png">
+<img width="1101" alt="Screenshot 2020-02-12 at 6 01 45 PM" src="https://user-images.githubusercontent.com/60460833/74324279-c0fc2b80-4dc1-11ea-9049-199a35be65da.png">
+
  
 Take note of the version of nginx under the pod template section. The current image version is nginx:1.7.8. From the event section at the bottom, you will be able to see that a replicaset with 2 pods has been created successfully. 
  
