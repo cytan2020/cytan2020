@@ -51,7 +51,7 @@ If the yaml file is unable to execute, an error message will be displayed. Commo
 
    
 
-This command gives a high level overview of the replicasets that are currently running in the namespace. It provides the name of the replicaset, the number of ‘desired’ number of pods, the 'current' number of pods, the 'ready' of pods, as well as the age of the replicaset. We set the number of replicas to 2, so our replicaset will create 2 pods. 
+The "get all" command gives an overview of all the resources that are currently running in the namespace. Since deployment creates replicasets and the replicaset creates pods, we are able to see those resources in the namespace. 
 
 2. To get more information on a particular replicaset, run the command ```kubectl describe replicaset```. You should see the following: 
 
