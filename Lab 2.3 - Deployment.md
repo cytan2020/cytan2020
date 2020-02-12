@@ -94,7 +94,7 @@ The reason that only 1 pod encountered an error is due to the fact that the pods
 
 6. Run ``` kubectl rollout undo deployment deployment-1 --to-revision=2 ```. You should see the message: ```deployment.apps/deployment-1 rolled back```. Run ``` kubectl rollout status deploy deployment-1``` to verify that the deployment has been successfully rolled out.
 
-## Delete ReplicaSet
+## Delete Deployment
 
 1. Next, let's delete the deployment. Run the command ```kubectl delete deployment deployment-1```. You should see the message: ```deployment.apps/deployment-1 deleted```. 
  
