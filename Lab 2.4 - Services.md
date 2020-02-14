@@ -2,7 +2,7 @@
 # Lab 2.4 - Services  
 
 In this lab, you will need to:
-* Create services imperatively and declaratively
+* Create ClusterIP services imperatively and declaratively
 * View and inspect the services that are currently in the namespace 
 * Adding pods to a particular service
 * Delete service
