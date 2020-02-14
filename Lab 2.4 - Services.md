@@ -2,17 +2,83 @@
 # Lab 2.4 - Services  
 
 In this lab, you will need to:
-* Create services imperatively 
+* Create services imperatively and declaratively
 * View and inspect the services that are currently in the namespace 
 * Adding pods to a particular service
 * Delete service
- 
- 
+  
 ## Prerequisites  
 
-Complete Lab 2.1 & Lab 2.2 before attempting this exercise. You will need to understand the concept of pods, replicaset, deployments and yaml. 
+Complete Lab 2.1, Lab 2.2 & Lab 2.3 before attempting this exercise. You will need to understand the concept of pods, replicaset, deployments, services and yaml. 
 
-## Create Deployment 
+## Create ClusterIP Services 
+ 
+There are 2 ways of creating clusterip services. The first way is to create it via the yaml file imperatively, while the second is to create it via the command line declaratively.   
+
+1. Copy the following into an empty yaml file called my-service.yaml: 
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: myApp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      
+Run kubectl create -f my-service.yaml. You should see the message: service/my-service created . 
+
+2. Run kubectl get svc to check if the service is created successfully. You should see the following: 
+
+<image> 
+ 
+3. Run kubectl get ep . The endpoint indicates the resources that are currently bind to the service. The endpoint should be <none> because we have not assgined any resource to the service yet.  
+ 
+ <image>
+ 
+3. Copy the following into an empty yaml file called pod-1.yaml: 
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-1
+  labels:
+    app: myApp
+spec:
+  containers:
+  - name: nginx
+    image: nginx 
+    ports: 
+     - containerPort: 80 
+       protocol: TCP
+      
+    
+Run kubectl create -f pod-1.yaml to create the pod.
+
+4. Run kubectl get pod -o wide. This gives extra information about the pod, and in this case we want to take a look at the IP address. 
+
+5. Run kubectl get ep. You should see that the endpoint of the pod now reflects the IP of the pod. 
+
+6. Run curl (IP of your pod):80 . You should see the following: 
+
+<image> 
+ 
+This command displays the content of the pod. 
+
+7. Run kubectl get svc . Run curl (IP of your service):80. If the service is linked correctly, you should see the same content as step 7. The pods and service are linked together via the concept of labels and selectors. The concept of labels and selectors is very important in Kubernetes.
+
+
+ 
+ kubectl run nginx --image=nginx --restart=Never --port=80 --expose 
+ 
+ kubectl get svc nginx # services
+kubectl get ep # endpoints 
+
+wget -O- IP:80 
+
 
 
 1. Copy the following into an empty yaml file: 
