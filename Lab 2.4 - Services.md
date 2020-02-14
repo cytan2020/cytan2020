@@ -11,12 +11,13 @@ In this lab, you will need to:
 
 Complete Lab 2.1, Lab 2.2 & Lab 2.3 before attempting this exercise. You will need to understand the concept of pods, replicaset, deployments, services and yaml. 
 
-## Create ClusterIP Services 
+## Create ClusterIP Services Imperatively
  
 There are 2 ways of creating clusterip services. The first way is to create it via the yaml file imperatively, while the second is to create it via the command line declaratively.   
 
-1. Copy the following into an empty yaml file called my-service.yaml: 
+1. Copy the following into an empty yaml file called ```my-service.yaml```: 
 
+```
 apiVersion: v1
 kind: Service
 metadata:
@@ -28,19 +29,22 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
+```
       
-Run kubectl create -f my-service.yaml. You should see the message: service/my-service created . 
+Run ```kubectl create -f my-service.yaml```. You should see the message: ```service/my-service created```. 
 
-2. Run kubectl get svc to check if the service is created successfully. You should see the following: 
+2. Run ```kubectl get svc``` to check if the service is created successfully. You should see the following: 
 
-<image> 
- 
-3. Run kubectl get ep . The endpoint indicates the resources that are currently bind to the service. The endpoint should be <none> because we have not assgined any resource to the service yet.  
- 
- <image>
- 
-3. Copy the following into an empty yaml file called pod-1.yaml: 
+<img width="717" alt="Screenshot 2020-02-14 at 3 53 13 PM" src="https://user-images.githubusercontent.com/60460833/74513449-8cb17800-4f45-11ea-9b98-31d204ed77f8.png">
 
+ 
+3. Run ```kubectl get ep```. The endpoint indicates the resources that are currently bind to the service. The endpoint should be <none> because we have not assgined any resource to the service yet.  
+ 
+ <img width="378" alt="Screenshot 2020-02-14 at 3 53 37 PM" src="https://user-images.githubusercontent.com/60460833/74513274-2a587780-4f45-11ea-982d-f54d3b860de9.png">
+ 
+3. Copy the following into an empty yaml file called ```pod-1.yaml```: 
+
+```
 apiVersion: v1
 kind: Pod
 metadata:
@@ -54,22 +58,24 @@ spec:
     ports: 
      - containerPort: 80 
        protocol: TCP
-      
+```
     
-Run kubectl create -f pod-1.yaml to create the pod.
+Run ```kubectl create -f pod-1.yaml``` to create the pod.
 
-4. Run kubectl get pod -o wide. This gives extra information about the pod, and in this case we want to take a look at the IP address. 
+4. Run ```kubectl get pod -o wide```. This gives extra information about the pod, and in this case we want to take a look at the IP address. 
 
-5. Run kubectl get ep. You should see that the endpoint of the pod now reflects the IP of the pod. 
+5. Run ```kubectl get ep```. You should see that the endpoint of the pod now reflects the IP of the pod. 
 
-6. Run curl (IP of your pod):80 . You should see the following: 
+6. Run ```curl (IP of your pod):80```. You should see the following: 
+ 
+<img width="712" alt="Screenshot 2020-02-14 at 4 14 06 PM" src="https://user-images.githubusercontent.com/60460833/74513340-5247db00-4f45-11ea-8f85-2f89f8d00b03.png">
 
-<image> 
  
 This command displays the content of the pod. 
 
-7. Run kubectl get svc . Run curl (IP of your service):80. If the service is linked correctly, you should see the same content as step 7. The pods and service are linked together via the concept of labels and selectors. The concept of labels and selectors is very important in Kubernetes.
+7. Run kubectl get svc . Run ```curl (IP of your service):80```. If the service is linked correctly, you should see the same content as step 7. The pods and service are linked together via the concept of labels and selectors. The concept of labels and selectors is very important in Kubernetes.
 
+## Create ClusterIP Services Declaratively
 
  
  kubectl run nginx --image=nginx --restart=Never --port=80 --expose 
