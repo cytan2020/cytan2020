@@ -86,35 +86,6 @@ This command displays the content of the pod.
 
 
 
-1. Copy the following into an empty yaml file: 
-
-```
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: deployment-1
-spec:
-   replicas: 2
-  selector:
-    matchLabels:
-      name: nginx-pod
-  template:
-    metadata:
-      labels:
-        name: nginx-pod
-    spec:
-      containers:
-      - name: nginx-container
-        image: nginx:1.7.8
-```
-
-Save the file as deployment1.yaml and run ```kubectl create -f deployment1.yaml```. You should see the following message: ```error: error parsing dep1.yaml: error converting YAML to JSON: yaml: line 6: did not find expected key```.
-
-2.  Note that the apiVersion for Deployment is the same as the apiVersion for ReplicaSet. Edit the yaml file and align the replicaset field with the selector field. Run ```kubectl create -f deployment1.yaml``` again. You should see the following message: ```deployment.apps/deployment-1 created```. 
-
-If the yaml file is unable to execute, an error message will be displayed. Common errors include identation issues, wrong use of apiVersion and incorrect labels. 
-
-
 ## Delete Service
 
 1. Next, let's delete the service. Run the command ```kubectl delete svc my-service```. You should see the message: ```service "my-service" deleted```. 
