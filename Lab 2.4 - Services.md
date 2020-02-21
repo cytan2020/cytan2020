@@ -78,7 +78,7 @@ This command displays the content of the pod.
 
 ## Create ClusterIP Services Declaratively
 
-1. Run ```kubectl run pod-service2 --image=nginx --restart=Never --port=80 --expose --name=my-service-2```. This command creates both a pod and a service.  
+1. Run ```kubectl run pod-service2 --image=nginx --restart=Never --port=80 --expose```. This command creates both a pod and a service.  
 
 2. Run ```kubectl get svc``` and ```kubectl get ep``` to verify that the pod and services have been created successfully. 
 
