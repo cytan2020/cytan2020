@@ -47,7 +47,7 @@ Save the file as deployment1.yaml and run ```kubectl create -f deployment1.yaml`
 ## View Deployment
 1. To view the deployment that you have created in the current namespace, you can run the command ```kubectl get deployment```. For now let's run ```kubectl get all``` to see all the resources created by the deployment. You should see the following: 
  
-<p align="center"
+<p align="center">
 <img width="716" alt="Screenshot 2020-02-12 at 3 38 40 PM" src="https://user-images.githubusercontent.com/60460833/74313605-f9463e80-4dae-11ea-9aec-1d90d2355b55.png"> 
 
 
