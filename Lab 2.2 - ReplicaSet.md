@@ -15,7 +15,7 @@ Complete Lab 2.1 before attempting this exercise. You will need to understand th
 
 
 1. Copy the following into an empty yaml file:  
-   
+<p>
 ```
 apiVersion: v1
 kind: ReplicaSet
@@ -35,6 +35,7 @@ spec:
       - name: nginx
         image: nginx 
 ```
+</p>
    
    
    
