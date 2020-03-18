@@ -48,11 +48,12 @@ Save the file as deployment1.yaml and run ```kubectl create -f deployment1.yaml`
 1. To view the deployment that you have created in the current namespace, you can run the command ```kubectl get deployment```. For now let's run ```kubectl get all``` to see all the resources created by the deployment. You should see the following: 
  
 <p align="center"
-<img width="716" alt="Screenshot 2020-02-12 at 3 38 40 PM" src="https://user-images.githubusercontent.com/60460833/74313605-f9463e80-4dae-11ea-9aec-1d90d2355b55.png">
-</p>
-   
+<img width="716" alt="Screenshot 2020-02-12 at 3 38 40 PM" src="https://user-images.githubusercontent.com/60460833/74313605-f9463e80-4dae-11ea-9aec-1d90d2355b55.png"> 
+
 
 The "get all" command gives an overview of all the resources that are currently running in the namespace. Since deployment creates replicasets and the replicaset creates pods, we are able to see those resources in the namespace. 
+</p>
+   
 
 2. To get more information on a particular deployment, run the command ```kubectl describe deployment```. You should see the following: 
 
@@ -90,10 +91,12 @@ There are 2 ways of upgrading deployments. The first way is to edit the yaml fil
 4. Run ```kubectl get pods```. You should see the following: 
  
 <p align="center">
-<img width="789" alt="Screenshot 2020-02-12 at 5 46 44 PM" src="https://user-images.githubusercontent.com/60460833/74323025-cc4e5780-4dbf-11ea-92d4-c8989fbc39dc.png">
-</p>
+<img width="789" alt="Screenshot 2020-02-12 at 5 46 44 PM" src="https://user-images.githubusercontent.com/60460833/74323025-cc4e5780-4dbf-11ea-92d4-c8989fbc39dc.png"> 
+ 
 
    The reason that only 1 pod encountered an error is due to the fact that the pods are upgraded 1 at a time. This is the benefit of using rolling update. If there is a problem with your update, the error will not bring your system down. The remaining pods are still able to service your existing users.
+</p>
+
  
 5. Run ```kubectl describe deployment``` and verify that the version is nginx:999. Run ```kubectl rollout history deployment deployment-1``` . You should see a list of rollout history that you have done. Run ```kubectl rollout history deploy deployment-1 --revision=2```. You should be able to see a snippet of the pod template. 
 
