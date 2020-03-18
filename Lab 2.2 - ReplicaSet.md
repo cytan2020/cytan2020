@@ -14,28 +14,11 @@ Complete Lab 2.1 before attempting this exercise. You will need to understand th
 ## Create ReplicaSet 
 
 
-1. Copy the following into an empty yaml file: 
-
-```
-apiVersion: v1
-kind: ReplicaSet
-metadata:
-  name: replicaset-1
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      env: dev
-  template:
-    metadata:
-      labels:
-        env: dev
-    spec:
-      containers:
-      - name: nginx
-        image: nginx 
-```
-
+1. Copy the following into an empty yaml file:  
+   
+   
+   
+   
    Save the file as replicaset1.yaml and run ```kubectl create -f replicaset1.yaml```. You should see the following message: ```error: unable to recognize "replicaset-definition-1.yaml": no matches for kind "ReplicaSet" in version "v1"```.
 
 2.  Note that the apiVersion for ReplicaSet is not the same as the apiVersion for Pods. Edit the yaml file and change the version to ```apps/v1```. Run ```kubectl create -f replicaset1.yaml``` again. You should see the following message: ```replicaset.apps/replicaset-1 created```. 
