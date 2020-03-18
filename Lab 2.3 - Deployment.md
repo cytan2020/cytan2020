@@ -41,7 +41,7 @@ Save the file as deployment1.yaml and run ```kubectl create -f deployment1.yaml`
 
 2.  Note that the apiVersion for Deployment is the same as the apiVersion for ReplicaSet. Edit the yaml file and align the replicaset field with the selector field. Run ```kubectl create -f deployment1.yaml``` again. You should see the following message: ```deployment.apps/deployment-1 created```. 
 
-If the yaml file is unable to execute, an error message will be displayed. Common errors include identation issues, wrong use of apiVersion and incorrect labels. 
+   If the yaml file is unable to execute, an error message will be displayed. Common errors include identation issues, wrong use of apiVersion and incorrect labels. 
 
 
 ## View Deployment
@@ -70,7 +70,9 @@ There are 2 ways of upgrading deployments. The first way is to edit the yaml fil
 
 3. Run ```kubectl describe deployment```. You should see the nginx version as nginx:1.7.9. 
 
-![image](https://user-images.githubusercontent.com/60460833/74321604-82647200-4dbd-11ea-9842-417ff279304a.png)
+<p align="center">
+![image](https://user-images.githubusercontent.com/60460833/74321604-82647200-4dbd-11ea-9842-417ff279304a.png) 
+</p>
  
 4. Run ```kubectl edit deployment deployment-1```. Go to nginx-container and change the version to ```nginx:1.7.8```. 
 
@@ -99,7 +101,7 @@ The reason that only 1 pod encountered an error is due to the fact that the pods
 1. Next, let's delete the deployment. Run the command ```kubectl delete deployment deployment-1```. You should see the message: ```deployment.apps/deployment-1 deleted```. 
  
 
-Run ```kubectl get all```. You should no longer see the pods and replicaset that are associated with the deployment. 
+   Run ```kubectl get all```. You should no longer see the pods and replicaset that are associated with the deployment. 
 
 
 # Congratulations! You have completed the Kubernetes Deployment exercise!
