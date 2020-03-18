@@ -38,10 +38,15 @@ spec:
 4. To check if the YAML file has been saved, run the command ```cat create-pod.yaml``` to view the YAML file. You should see the following:  
 
 <img width="266" alt="Screenshot 2020-02-11 at 2 56 48 PM" src="https://user-images.githubusercontent.com/60460833/74216419-596daf80-4cdf-11ea-8921-71e1e93c1bd2.png"> 
-
-5. Run ```kubectl create -f create-pod.yaml``` to create a pod. You should see the message:```pod/myapp-pod1 created```.
  
-The ```kubectl create -f <name of yaml>``` command executes and creates a pod object based on the specifications in the file. This is applicable for the creation of other Kubernetes objects as well.   
+<p align="center">
+
+
+5. Run ```kubectl create -f create-pod.yaml``` to create a pod. You should see the message:```pod/myapp-pod1 created```. 
+ 
+The ```kubectl create -f <name of yaml>``` command executes and creates a pod object based on the specifications in the file. This is applicable for the creation of other Kubernetes objects as well.    
+
+</p>
  
 6. Next, we will create a pod via imperative command. Run the command ```kubectl run myapp-pod2 --image=redis --restart=Never```. You should see the message: ```pod/myapp-pod2 created```.
 
