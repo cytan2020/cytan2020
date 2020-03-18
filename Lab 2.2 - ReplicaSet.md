@@ -38,7 +38,7 @@ spec:
    
 
    
-2.     Save the file as replicaset1.yaml and run ```kubectl create -f replicaset1.yaml```. You should see the following message: ```error: unable to recognize "replicaset-definition-1.yaml": no matches for kind "ReplicaSet" in version "v1"```.
+Save the file as replicaset1.yaml and run ```kubectl create -f replicaset1.yaml```. You should see the following message: ```error: unable to recognize "replicaset-definition-1.yaml": no matches for kind "ReplicaSet" in version "v1"```.
 
 2.  Note that the apiVersion for ReplicaSet is not the same as the apiVersion for Pods. Edit the yaml file and change the version to ```apps/v1```. Run ```kubectl create -f replicaset1.yaml``` again. You should see the following message: ```replicaset.apps/replicaset-1 created```. 
 
@@ -48,15 +48,17 @@ spec:
 ## View ReplicaSet 
 1. To view the replicaset that you have created in the current namespace, run the command ```kubectl get replicaset```. You should see the following: 
  
+<p align="center">
 <img width="447" alt="Screenshot 2020-02-11 at 3 48 39 PM" src="https://user-images.githubusercontent.com/60460833/74218848-09461b80-4ce6-11ea-857e-0f19f5802f9d.png">
-   
+ </p>  
 
    This command gives a high level overview of the replicasets that are currently running in the namespace. It provides the name of the replicaset, the number of ‘desired’ number of pods, the 'current' number of pods, the 'ready' of pods, as well as the age of the replicaset. We set the number of replicas to 2, so our replicaset will create 2 pods. 
 
 2. To get more information on a particular replicaset, run the command ```kubectl describe replicaset```. You should see the following: 
 
-<img width="880" alt="Screenshot 2020-02-11 at 4 24 47 PM" src="https://user-images.githubusercontent.com/60460833/74220627-0a2d7c00-4ceb-11ea-8fda-7675a92e4e64.png">
-
+<p align="center">
+<img width="880" alt="Screenshot 2020-02-11 at 4 24 47 PM" src="https://user-images.githubusercontent.com/60460833/74220627-0a2d7c00-4ceb-11ea-8fda-7675a92e4e64.png"> 
+</p>
 From the event section at the bottom, you will be able to see that 2 pods have been created successfully. 
 
 3. Run ```kubectl get pods```. You should see 2 pods. Delete 1 of the pods and run ```kubectl get pods``` again. You should see that the replicaset will automatically maintain 2 pods even if you delete 1 of them.
