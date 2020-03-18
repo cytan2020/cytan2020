@@ -35,13 +35,17 @@ Run ```kubectl create -f my-service.yaml```. You should see the message: ```serv
 
 2. Run ```kubectl get svc``` to check if the service is created successfully. You should see the following: 
 
+<p align="center">
 <img width="717" alt="Screenshot 2020-02-14 at 3 53 13 PM" src="https://user-images.githubusercontent.com/60460833/74513449-8cb17800-4f45-11ea-9b98-31d204ed77f8.png">
+</p>
 
 By default, Kubernetes will create a service for its own internal usage. We can ignore if for this lab.
  
 3. Run ```kubectl get ep```. The endpoint indicates the resources that are currently bind to the service. The endpoint for our service should be <none> because we have not assgined any resource to the service yet.  
  
- <img width="378" alt="Screenshot 2020-02-14 at 3 53 37 PM" src="https://user-images.githubusercontent.com/60460833/74513274-2a587780-4f45-11ea-982d-f54d3b860de9.png">
+ <p align="center">
+ <img width="378" alt="Screenshot 2020-02-14 at 3 53 37 PM" src="https://user-images.githubusercontent.com/60460833/74513274-2a587780-4f45-11ea-982d-f54d3b860de9.png"> 
+  </p>
  
 3. Copy the following into an empty yaml file called ```pod-1.yaml```: 
 
@@ -68,9 +72,10 @@ Run ```kubectl create -f pod-1.yaml``` to create the pod.
 5. Run ```kubectl get ep```. You should see that the endpoint of the pod now reflects the IP of the pod. 
 
 6. Run ```curl (IP of your pod):80```. You should see the following: 
- 
-<img width="712" alt="Screenshot 2020-02-14 at 4 14 06 PM" src="https://user-images.githubusercontent.com/60460833/74513340-5247db00-4f45-11ea-8f85-2f89f8d00b03.png">
 
+<p align="center">
+<img width="712" alt="Screenshot 2020-02-14 at 4 14 06 PM" src="https://user-images.githubusercontent.com/60460833/74513340-5247db00-4f45-11ea-8f85-2f89f8d00b03.png">
+</p>
  
 This command displays the content of the pod. 
 
@@ -91,7 +96,7 @@ This command displays the content of the pod.
 1. Next, let's delete the service. Run the command ```kubectl delete svc my-service```. You should see the message: ```service "my-service" deleted```. 
  
 
-Run ```kubectl get svc```. You should no longer see the service ```my-service```. Repeat for ```pod/my-service2```. 
+   Run ```kubectl get svc```. You should no longer see the service ```my-service```. Repeat for ```pod/my-service2```. 
 
 
 # Congratulations! You have completed the Kubernetes Service exercise!
