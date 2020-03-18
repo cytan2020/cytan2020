@@ -93,7 +93,7 @@ There are 2 ways of upgrading deployments. The first way is to edit the yaml fil
 <img width="789" alt="Screenshot 2020-02-12 at 5 46 44 PM" src="https://user-images.githubusercontent.com/60460833/74323025-cc4e5780-4dbf-11ea-92d4-c8989fbc39dc.png">
 </p>
 
-The reason that only 1 pod encountered an error is due to the fact that the pods are upgraded 1 at a time. This is the benefit of using rolling update. If there is a problem with your update, the error will not bring your system down. The remaining pods are still able to service your existing users.
+   The reason that only 1 pod encountered an error is due to the fact that the pods are upgraded 1 at a time. This is the benefit of using rolling update. If there is a problem with your update, the error will not bring your system down. The remaining pods are still able to service your existing users.
  
 5. Run ```kubectl describe deployment``` and verify that the version is nginx:999. Run ```kubectl rollout history deployment deployment-1``` . You should see a list of rollout history that you have done. Run ```kubectl rollout history deploy deployment-1 --revision=2```. You should be able to see a snippet of the pod template. 
 
