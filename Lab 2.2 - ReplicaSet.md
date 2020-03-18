@@ -36,7 +36,7 @@ spec:
         image: nginx 
 ```
 
-Save the file as replicaset1.yaml and run ```kubectl create -f replicaset1.yaml```. You should see the following message: ```error: unable to recognize "replicaset-definition-1.yaml": no matches for kind "ReplicaSet" in version "v1"```.
+   Save the file as replicaset1.yaml and run ```kubectl create -f replicaset1.yaml```. You should see the following message: ```error: unable to recognize "replicaset-definition-1.yaml": no matches for kind "ReplicaSet" in version "v1"```.
 
 2.  Note that the apiVersion for ReplicaSet is not the same as the apiVersion for Pods. Edit the yaml file and change the version to ```apps/v1```. Run ```kubectl create -f replicaset1.yaml``` again. You should see the following message: ```replicaset.apps/replicaset-1 created```. 
 
