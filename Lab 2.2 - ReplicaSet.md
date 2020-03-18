@@ -49,7 +49,7 @@ spec:
 <img width="447" alt="Screenshot 2020-02-11 at 3 48 39 PM" src="https://user-images.githubusercontent.com/60460833/74218848-09461b80-4ce6-11ea-857e-0f19f5802f9d.png">
    
 
-This command gives a high level overview of the replicasets that are currently running in the namespace. It provides the name of the replicaset, the number of ‘desired’ number of pods, the 'current' number of pods, the 'ready' of pods, as well as the age of the replicaset. We set the number of replicas to 2, so our replicaset will create 2 pods. 
+   This command gives a high level overview of the replicasets that are currently running in the namespace. It provides the name of the replicaset, the number of ‘desired’ number of pods, the 'current' number of pods, the 'ready' of pods, as well as the age of the replicaset. We set the number of replicas to 2, so our replicaset will create 2 pods. 
 
 2. To get more information on a particular replicaset, run the command ```kubectl describe replicaset```. You should see the following: 
 
@@ -72,7 +72,7 @@ There are 2 ways of scaling pods. The first way is to edit the yaml file, while 
 1. Next, let's delete the replicaset. Run the command ```kubectl delete rs replicaset-1```. You should see the message: ```replicaset.apps "replicaset-1" deleted```.
  
 
-Run ```kubectl get rs```. You should not see any replicaset. 
+   Run ```kubectl get rs```. You should not see any replicaset. 
 
 
 # Congratulations! You have completed the Kubernetes ReplicaSet exercise!
