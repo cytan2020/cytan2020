@@ -58,9 +58,8 @@ spec:
   
  <p align="center">
  <img width="470" alt="Screenshot 2020-02-11 at 3 06 59 PM" src="https://user-images.githubusercontent.com/60460833/74216703-3394da80-4ce0-11ea-838c-b36c24ed2c09.png">
- </p>
-                    This command gives a high level overview of the pods that are currently running in the namespace. It provides the name  of the pod, the number of ‘ready’ containers in the pod, the status of the pod, the number of time it restarted, as well as      the age of the pod
-
+ </p> 
+ 
 2. To get more information on a particular pod, run the command ```kubectl describe pod myapp-pod1```. You should see the following: 
 
 <img width="1065" alt="Screenshot 2020-02-11 at 3 10 26 PM" src="https://user-images.githubusercontent.com/60460833/74216857-a69e5100-4ce0-11ea-828b-a23b36afdcdb.png">
