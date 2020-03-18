@@ -40,7 +40,7 @@ spec:
 
 2.  Note that the apiVersion for ReplicaSet is not the same as the apiVersion for Pods. Edit the yaml file and change the version to ```apps/v1```. Run ```kubectl create -f replicaset1.yaml``` again. You should see the following message: ```replicaset.apps/replicaset-1 created```. 
 
-If the yaml file is unable to execute, an error message will be displayed. Common errors include identation issues, wrong use of apiVersion and incorrect labels. 
+    If the yaml file is unable to execute, an error message will be displayed. Common errors include identation issues, wrong use of apiVersion and incorrect labels. 
 
 
 ## View ReplicaSet
