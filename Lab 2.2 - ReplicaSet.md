@@ -16,6 +16,25 @@ Complete Lab 2.1 before attempting this exercise. You will need to understand th
 
 1. Copy the following into an empty yaml file:  
    
+```
+apiVersion: v1
+kind: ReplicaSet
+metadata:
+  name: replicaset-1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      env: dev
+  template:
+    metadata:
+      labels:
+        env: dev
+    spec:
+      containers:
+      - name: nginx
+        image: nginx 
+```
    
    
    
