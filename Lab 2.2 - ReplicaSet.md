@@ -15,7 +15,7 @@ Complete Lab 2.1 before attempting this exercise. You will need to understand th
 
 
 1. Copy the following into an empty yaml file:  
-<p>
+
 ```
 apiVersion: v1
 kind: ReplicaSet
@@ -35,9 +35,8 @@ spec:
       - name: nginx
         image: nginx 
 ```
-</p>
    
-   
+
    
    Save the file as replicaset1.yaml and run ```kubectl create -f replicaset1.yaml```. You should see the following message: ```error: unable to recognize "replicaset-definition-1.yaml": no matches for kind "ReplicaSet" in version "v1"```.
 
