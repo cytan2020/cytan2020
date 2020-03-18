@@ -43,7 +43,7 @@ spec:
     If the yaml file is unable to execute, an error message will be displayed. Common errors include identation issues, wrong use of apiVersion and incorrect labels. 
 
 
-## View ReplicaSet
+## View ReplicaSet 
 1. To view the replicaset that you have created in the current namespace, run the command ```kubectl get replicaset```. You should see the following: 
  
 <img width="447" alt="Screenshot 2020-02-11 at 3 48 39 PM" src="https://user-images.githubusercontent.com/60460833/74218848-09461b80-4ce6-11ea-857e-0f19f5802f9d.png">
