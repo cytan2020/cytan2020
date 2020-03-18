@@ -36,9 +36,10 @@ spec:
  mode after copying the text, hit your escape key and enter ```:wq!``` into the command line. This command saves and exits the file. Hit enter to execute the command. 
 
 4. To check if the YAML file has been saved, run the command ```cat create-pod.yaml``` to view the YAML file. You should see the following:  
-
-<img width="266" alt="Screenshot 2020-02-11 at 2 56 48 PM" src="https://user-images.githubusercontent.com/60460833/74216419-596daf80-4cdf-11ea-8921-71e1e93c1bd2.png"> 
  
+<p align="center">
+<img width="266" alt="Screenshot 2020-02-11 at 2 56 48 PM" src="https://user-images.githubusercontent.com/60460833/74216419-596daf80-4cdf-11ea-8921-71e1e93c1bd2.png"> 
+</p>
 
 
 
@@ -54,8 +55,10 @@ spec:
 
 ## View Pods
 1. To view all the pods that you have created in the current namespace, run the command ```kubectl get pod```. You should see the following: 
- 
+  
+ <p align="center">
  <img width="470" alt="Screenshot 2020-02-11 at 3 06 59 PM" src="https://user-images.githubusercontent.com/60460833/74216703-3394da80-4ce0-11ea-838c-b36c24ed2c09.png">
+ </p>
    
 
       This command gives a high level overview of the pods that are currently running in the namespace. It provides the name of the pod, the number of ‘ready’ containers in the pod, the status of the pod, the number of time it restarted, as well as the age of the pod
