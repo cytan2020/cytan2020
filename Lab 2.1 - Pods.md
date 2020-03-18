@@ -72,7 +72,7 @@ spec:
 1.  Next, let's delete the pods. Run the command ```kubectl delete pod myapp-pod1```. You should see the message: pod "myapp-```pod1" deleted```.
  
 
-   Run ```kubectl get pod```. You should only see ```myapp-pod2``` left. 
+      Run ```kubectl get pod```. You should only see ```myapp-pod2``` left. 
 
 
 
