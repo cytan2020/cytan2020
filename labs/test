@@ -1,0 +1,8 @@
+docker run --rm k8s.gcr.io/metrics-server:v0.3.6 --help
+
+
+```
+Fruit: Apple 
+Main: Pasta
+Dessert: Cake
+```
