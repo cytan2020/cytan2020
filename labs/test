@@ -2,7 +2,12 @@ docker run --rm k8s.gcr.io/metrics-server:v0.3.6 --help
 
 
 ```
-Fruit: Apple 
-Main: Pasta
-Dessert: Cake
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod1
+spec:
+  containers:
+  - name: myapp-container
+    image: redis   
 ```
